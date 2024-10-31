@@ -3,6 +3,9 @@ resource "aws_instance" "jenkins" {
   instance_type = "t2.micro"
   key_name      = "jenkins_key"
 
+  # Associate the instance with the security group
+  vpc_security_group_ids = [aws_security_group.ssh_access.id]
+
   tags = {
     Name = "JenkinsServer"
   }
