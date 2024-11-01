@@ -4,7 +4,7 @@ resource "aws_instance" "jenkins" {
   key_name      = "jenkins_key"
 
   # Associate the instance with the security group
-  vpc_security_group_ids = [aws_security_group.ssh_access.id]
+  vpc_security_group_ids = [aws_security_group.allow_ssh.id]
 
   tags = {
     Name = "JenkinsServer"
