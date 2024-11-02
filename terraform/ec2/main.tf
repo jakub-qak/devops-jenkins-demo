@@ -1,6 +1,6 @@
 resource "aws_instance" "jenkins" {
   ami           = "ami-005fc0f236362e99f"
-  instance_type = "t2.micro"
+  instance_type = "t2.small"
   key_name      = "jenkins_key"
 
   # Associate the instance with the security group
