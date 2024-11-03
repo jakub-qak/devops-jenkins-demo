@@ -7,7 +7,8 @@ resource "aws_instance" "jenkins" {
   vpc_security_group_ids = [
     "sg-0a7ce3471af25bce5", # SSH access
     "sg-01ced279f184dc5db", # Jenkins HTTP access 
-    "sg-059f8130259a4ba89"  # Prometheus HTTP access
+    "sg-059f8130259a4ba89", # Prometheus HTTP access
+    "sg-06f9c130361fc1cc7"  # Grafana HTTP access
   ]
 
   tags = {
