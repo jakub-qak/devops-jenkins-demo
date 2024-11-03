@@ -83,3 +83,29 @@ resource "aws_security_group" "prometheus_sg" {
     Name = "prometheus_security_group"
   }
 }
+
+resource "aws_security_group" "grafana_sg" {
+  name        = "grafana_security_group"
+  description = "Security group for allowing HTTP access to Grafana"
+
+  # Allow inbound Grafana HTTP access (port 3000) from any IP
+  ingress {
+    description = "Allow Grafana HTTP traffic"
+    from_port   = 3000
+    to_port     = 3000
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]  # allows traffic from any IP
+  }
+
+  # Outbound rules to allow all traffic
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "grafana_security_group"
+  }
+}
